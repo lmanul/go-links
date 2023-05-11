@@ -23,8 +23,7 @@ searchField.addEventListener('input', (e) => {
 saveButton.addEventListener('click', (event) => {
   refreshRoutingTable(inputField.value).then((table) => {
     saveButton.classList.add('success');
-    // Subtract because of the "instructions" line.
-    saveButton.textContent = 'Fetched ' + (Object.keys(table).length - 1) + ' shortcuts';
+    saveButton.textContent = 'Fetched ' + Object.keys(table).length + ' shortcuts';
   }).catch(() => {
     saveButton.classList.add('failure');
     saveButton.textContent = 'Oops! Valid JSON?';

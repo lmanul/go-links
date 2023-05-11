@@ -1,12 +1,10 @@
 let routingTable;
 
-const ROUTING_TABLE_STORAGE_KEY = 'routing';
-
 const loadRoutingTable = () => {
-  chrome.storage.local.get(ROUTING_TABLE_STORAGE_KEY, (data) => {
+  chrome.storage.local.get(['routing']).then((data) => {
     console.log('Loaded');
-    console.log(data);
-    routingTable = JSON.parse(data[ROUTING_TABLE_STORAGE_KEY]);
+    console.log(data['routing']);
+    routingTable = JSON.parse(data['routing']);
     console.log(routingTable);
   });
 };
@@ -14,19 +12,32 @@ const loadRoutingTable = () => {
 const refreshRoutingTable = (url) => {
   return fetch(url).then((res) => {
     return res.text().then((data) => {
-      // Let's remove all new line characters.
-      data = data.replace(/\n/g, '');
-      // Also collapse all spaces
-      while (data.indexOf('  ') != -1) {
-        data = data.replace(/  /g, ' ');
+      const lines = data.split('\n');
+      const filtered_lines = [];
+      for (let line of lines) {
+        line = line.trim();
+        // Ignore comments
+        if (line.startsWith('"#')) {
+          continue;
+        }
+        // Also collapse all spaces
+        while (line.indexOf('  ') != -1) {
+          line = line.replace(/  /g, ' ');
+        }
+        if (!line) {
+          continue;
+        }
+        filtered_lines.push(line);
       }
+      let sanitized_data = filtered_lines.join(' ');
       // JSON doesn't like a trailing comma at the very end of a list
-      data = data.replace(/],}/, ']}');
+      sanitized_data = sanitized_data.replace(/],\s?}/, ']}');
       return new Promise((resolve, reject) => {
         try {
-          const parsed = JSON.parse(data);
+          console.log("Fetched", sanitized_data);
+          const parsed = JSON.parse(sanitized_data);
           routingTable = parsed;
-          chrome.storage.local.set({ROUTING_TABLE_STORAGE_KEY: data}, () => {
+          chrome.storage.local.set({'routing': sanitized_data}, () => {
             if (chrome.runtime.lastError) {
               console.log('Local storage failure');
               reject(chrome.runtime.lastError);

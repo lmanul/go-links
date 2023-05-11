@@ -40,6 +40,7 @@
     }
 
     #routing-input {
+      font-size: large;
       margin-right: 1ex;
     }
 
@@ -107,8 +108,11 @@
   </div>
 
   <div id="config">
-    <p id="desc">URL of the routing file:</p>
-    <div id="routing-input-container"><input type="text" size="32" id="routing-input"><button id="save">Save</button></div>
+    <p id="desc">Update definitions:</p>
+    <div id="routing-input-container">
+      <input type="text" size="32" id="routing-input" placeholder="URL of JSON file">
+      <button id="save">Save</button>
+    </div>
   </div>
 
   <script src="common.js"></script>
