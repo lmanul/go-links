@@ -101,3 +101,7 @@ const formatSearchResult = (result, userQuery) => {
   output += '</div>';
   return output;
 };
+
+const loadUrl = (target) => {
+  chrome.tabs.update({ url: target });
+};

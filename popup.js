@@ -6,6 +6,18 @@ searchField.focus();
 
 loadRoutingTable();
 
+const onResultClicked = (e) => {
+  console.log(e);
+  let target = e.target;
+  let targetUrl = target.getAttribute('data-target');
+  while (!targetUrl) {
+    target = target.parentElement;
+    targetUrl = target.getAttribute('data-target');
+  }
+  loadUrl(targetUrl);
+  window.close();
+};
+
 searchField.addEventListener('input', (e) => {
   console.log(routingTable);
   const query = e.target.value;
@@ -16,11 +28,11 @@ searchField.addEventListener('input', (e) => {
   for (const result of results) {
     let resultEl = document.createElement('div');
     resultEl.innerHTML = formatSearchResult(result, query);
+    resultEl.addEventListener('click', onResultClicked);
     resultsContainer.appendChild(resultEl);
   }
 });
 
-// Add event listener
 searchField.addEventListener('keydown', (event) => {
   // 'Enter' key.
   if (event.keyCode === 13) {
@@ -31,7 +43,7 @@ searchField.addEventListener('keydown', (event) => {
     }
     const firstResult = results[0];
     const target = firstResult.getAttribute('data-target');
-    chrome.tabs.update({ url: target });
+    loadUrl(target);
     // Close the popup
     window.close();
   }
