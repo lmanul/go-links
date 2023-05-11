@@ -20,12 +20,8 @@
             "48": "icons/48.png"
         }
     },
-    "host_permissions": [
-        "<all_urls>"
-    ],
     "permissions": [
         "storage",
         "tabs",
-        "unlimitedStorage"
     ]
 }
