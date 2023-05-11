@@ -15,7 +15,7 @@ searchField.addEventListener('input', (e) => {
   console.log('Results', results);
   for (const result of results) {
     let resultEl = document.createElement('div');
-    resultEl.innerHTML = formatSearchResult(result);
+    resultEl.innerHTML = formatSearchResult(result, query);
     resultsContainer.appendChild(resultEl);
   }
 });

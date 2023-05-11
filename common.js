@@ -82,10 +82,18 @@ const search = (query) => {
 
 const formatSearchResult = (result, userQuery) => {
   const target = result[1][0];
+  const key = result[0];
+  const matchIndexStart = key.indexOf(userQuery);
+  const matchIndexEnd = matchIndexStart + userQuery.length;
+  const keyWithHighlight = '<span>' +
+      key.substring(0, matchIndexStart) +
+      '<b>' + key.substring(matchIndexStart, matchIndexEnd) + '</b>' +
+      key.substring(matchIndexEnd) +
+      '</span>';
   let output = '';
   output += '<div class="result" data-target="' + target + '">';
   output += '  <div class="result-key">';
-  output +=      result[0];
+  output +=      keyWithHighlight;
   output += '  </div>';
   output += '  <div class="result-target">';
   output +=      target;
