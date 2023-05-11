@@ -6,9 +6,8 @@
       "name": "Manu Cornet"
     },
     "description": "Don't remember, just go!",
-    "background.service_worker": {
-        "page": "go.html",
-        "persistent": true
+    "background": {
+      "service_worker": "background.js"
     },
     "icons": {
         "128": "icons/128.png"
