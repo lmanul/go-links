@@ -1,0 +1,34 @@
+{
+    "manifest_version": 3,
+    "name": "Go Links",
+    "version": "0.1",
+    "author": {
+      "name": "Manu Cornet"
+    },
+    "description": "Don't remember, just go!",
+    "background.service_worker": {
+        "page": "go.html",
+        "persistent": true
+    },
+    "icons": {
+        "128": "icons/128.png"
+    },
+    "action": {
+        "default_title": "Go Links",
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icons/16.png",
+            "48": "icons/48.png"
+        }
+    },
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "permissions": [
+        "declarativeNetRequest",
+        "storage",
+        "tabs",
+        "unlimitedStorage",
+        "webRequest"
+    ]
+}
