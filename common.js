@@ -81,13 +81,14 @@ const search = (query) => {
 };
 
 const formatSearchResult = (result, userQuery) => {
+  const target = result[1][0];
   let output = '';
-  output += '<div class="result">';
+  output += '<div class="result" data-target="' + target + '">';
   output += '  <div class="result-key">';
   output +=      result[0];
   output += '  </div>';
   output += '  <div class="result-target">';
-  output +=      result[1][0];
+  output +=      target;
   output += '  </div>';
   output += '</div>';
   return output;

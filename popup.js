@@ -20,6 +20,23 @@ searchField.addEventListener('input', (e) => {
   }
 });
 
+// Add event listener
+searchField.addEventListener('keydown', (event) => {
+  // 'Enter' key.
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    const results = resultsContainer.querySelectorAll('.result');
+    if (!results.length) {
+      return;
+    }
+    const firstResult = results[0];
+    const target = firstResult.getAttribute('data-target');
+    chrome.tabs.update({ url: target });
+    // Close the popup
+    window.close();
+  }
+});
+
 saveButton.addEventListener('click', (event) => {
   refreshRoutingTable(inputField.value).then((table) => {
     saveButton.classList.add('success');
