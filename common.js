@@ -60,24 +60,35 @@ const search = (query) => {
     console.log('No routing table');
     return [];
   }
-  query = query.toLowerCase();
+  query = normalize(query);
   if (!query.trim()) {
     console.log('Empty query');
     return [];
   }
-  if (query in routingTable) {
+  const normalizedTable = {};
+  const normalizedQuery = normalize(query);
+  for (const key in routingTable) {
+    normalizedTable[normalize(key)] = routingTable[key];
+  }
+  if (normalizedQuery in normalizedTable) {
     // Exact match, return just that one.
-    console.log('Match for ', routingTable[query]);
-    return [[query, routingTable[query]]];
+    return [[normalizedQuery, normalizedTable[normalizedQuery]]];
   }
   const filtered = [];
-  for (const key in routingTable) {
-    if (key.includes(query)) {
-      filtered.push([key, routingTable[key]]);
+  for (const key in normalizedTable) {
+    if (key.includes(normalizedQuery)) {
+      filtered.push([key, normalizedTable[key]]);
     }
   }
   console.log('Filtered', filtered);
   return filtered;
+};
+
+const normalize = (s) => {
+  let normalized = s;
+  // Ignore dashes, use only lowercase.
+  normalized = normalized.replace(/-/g, '').toLowerCase();
+  return normalized;
 };
 
 const formatSearchResult = (result, userQuery) => {
