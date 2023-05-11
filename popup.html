@@ -4,15 +4,79 @@
   <style>
     body {
       background-color: #eee;
+      height: 500px;
       padding: 6ex 2ex;
+      width: 500px;
     }
 
-    #desc {
+    #search {
+      display: flex;
+    }
+
+    #search-desc, #search-input {
+      font-size: x-large;
+      vertical-align: middle;
+    }
+
+    #search-desc {
+      margin-right: 1ex;
+    }
+
+    #search-input {
+      padding: 3ex;
+    }
+
+    #desc, #save {
       font-size: large;
     }
 
-    #routing-input {
+    #search-input, #routing-input {
+      flex: 1;
       padding: 1ex;
+    }
+
+    #routing-input-container {
+      display: flex;
+    }
+
+    #routing-input {
+      margin-right: 1ex;
+    }
+
+    #results {
+      margin-bottom: 35ex;
+      margin-top: 3ex;
+      max-height: 300px;
+    }
+
+    .result {
+      background-color: white;
+      border: 1px solid rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+      padding: 1ex;
+    }
+
+    .result-key, .result-target {
+      display: inline-block;
+      margin-right: 1ex;
+      white-space: nowrap;
+    }
+
+    .result-key {
+      font-size: x-large;
+    }
+
+    .result-target {
+      color: #aaa;
+      font-size: large;
+      width: 20ex;
+    }
+
+    #config {
+      bottom: 3ex;
+      left: 3ex;
+      position: absolute;
+      right: 3ex;
     }
 
     #action {
@@ -23,7 +87,6 @@
       background-color: rgb(26, 115, 232);
       color: white;
       padding: 1ex;
-      font-size: large;
     }
 
     #save.success {
@@ -37,11 +100,16 @@
 
 <body>
 
-  <p id="desc">URL of the routing file:</p>
+  <div id="search">
+    <input id="search-input" type="text" placeholder="Go">
+  </div>
+  <div id="results">
+  </div>
 
-  <p><input type="text" size="64" id="routing-input"></p>
-
-  <p id="action"><button id="save">Save</button></p>
+  <div id="config">
+    <p id="desc">URL of the routing file:</p>
+    <div id="routing-input-container"><input type="text" size="32" id="routing-input"><button id="save">Save</button></div>
+  </div>
 
   <script src="common.js"></script>
   <script src="popup.js"></script>

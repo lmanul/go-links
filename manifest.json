@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Go Links",
+    "name": "Go",
     "version": "0.1",
     "author": {
       "name": "Manu Cornet"
@@ -24,10 +24,8 @@
         "<all_urls>"
     ],
     "permissions": [
-        "declarativeNetRequest",
         "storage",
         "tabs",
-        "unlimitedStorage",
-        "webRequest"
+        "unlimitedStorage"
     ]
 }
