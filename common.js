@@ -141,3 +141,24 @@ const formatSearchResult = (result, userQuery) => {
 const loadUrl = (target) => {
   chrome.tabs.update({ url: target });
 };
+
+const getRelativeTimeAgo = (past_timestamp) => {
+  const now = (new Date()).getTime();
+  console.log('Past ' + past_timestamp);
+  console.log('Now ' + now);
+  const diff_seconds = Math.floor((now - past_timestamp) / 1000);
+  const diff_minutes = Math.floor(diff_seconds / 60);
+  const diff_hours = Math.floor(diff_minutes / 60);
+  const diff_days = Math.floor(diff_hours / 24);
+
+  if (!!diff_days) {
+    return diff_days === 1 ? '1 day' : diff_days + ' days';
+  }
+  if (!!diff_hours) {
+    return diff_hours === 1 ? '1 hour' : diff_hours + ' hours';
+  }
+  if (!!diff_minutes) {
+    return diff_minutes === 1 ? '1 minute' : diff_minutes + ' minutes';
+  }
+  return 'moments';
+};

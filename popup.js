@@ -3,7 +3,6 @@ const inputField = document.querySelector('#routing-input');
 const saveButton = document.querySelector('#save');
 const resultsContainer = document.querySelector('#results');
 const lastUpdatedLabel = document.querySelector('#last-updated');
-searchField.focus();
 
 const initialize = () => {
   loadRoutingTable();
@@ -14,6 +13,7 @@ const initialize = () => {
       inputField.value = url;
     }
   });
+  searchField.focus();
 };
 
 const updateLastUpdateTimeStampUi = () => {
@@ -21,10 +21,8 @@ const updateLastUpdateTimeStampUi = () => {
     if (!timestamp) {
       return;
     }
-    const date = new Date(timestamp);
     lastUpdatedLabel.textContent = '(last updated ' +
-        date.toLocaleDateString() + ' ' +
-        date.toLocaleTimeString() + ')'
+        getRelativeTimeAgo(timestamp) + ' ago)';
   });
 };
 
@@ -77,6 +75,7 @@ saveButton.addEventListener('click', (event) => {
     saveButton.textContent = 'Fetched ' + Object.keys(table).length + ' shortcuts';
     saveRoutingTableUrl(inputField.value);
     updateLastUpdateTimeStampUi();
+    searchField.focus();
   }).catch(() => {
     saveButton.classList.add('failure');
     saveButton.textContent = 'Oops! Valid JSON?';

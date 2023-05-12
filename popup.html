@@ -90,6 +90,7 @@
       background-color: rgb(26, 115, 232);
       color: white;
       padding: 1ex;
+      white-space: nowrap;
     }
 
     #save.success {
@@ -110,10 +111,10 @@
   </div>
 
   <div id="config">
-    <p id="desc">Update definitions <span id="last-updated"></span></p>
+    <p id="desc">Auto-update source <span id="last-updated"></span></p>
     <div id="routing-input-container">
-      <input type="text" size="32" id="routing-input" placeholder="URL of JSON file">
-      <button id="save">Save</button>
+      <input type="text" id="routing-input" placeholder="URL of JSON file">
+      <button id="save">Update now</button>
     </div>
   </div>
 
