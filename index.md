@@ -33,7 +33,12 @@ On this same Extensions page, click on the top left "hamburger" menu:
 
 ![](img/extensions_hamburger.png)
 
-and pick "Keyboard Shortcuts".
+and pick "Keyboard Shortcuts". Find the "Go" extension and click on the "edit"
+button:
+
+![](img/edit_shortcut.png)
+
+![](img/set_json.png)
 
 # Usage
 
