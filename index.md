@@ -38,12 +38,22 @@ button:
 
 ![](img/edit_shortcut.png)
 
-We recommend `Ctrl-G` and will be assuming that below.
+I recommend `Ctrl-G` and will be assuming that below.
 
 # Configuration
 
 The extension gets its shortcut definitions from an JSON file that it updates
-regularly. Hit `Ctrl-G` to open the extension, paste the URL to that JSON
+regularly. The JSON file needs to have the following structure:
+
+```
+{
+  "### Hello ###": "Keys starting with '#' will be ignored, and dashes are ignored.",
+  "foo": ["https://destination.com", "owner"],
+  "bar": ["https://another-destination.com"]
+}
+```
+
+Hit `Ctrl-G` to open the extension, paste the URL to that JSON
 file, and click on "Update now".
 
 ![](img/set_json.png)
@@ -52,6 +62,16 @@ file, and click on "Update now".
 
 Hit `Ctrl-G` and type a few letters. Hit `Enter` to go to the first result,
 or click on one of the results in the list.
+
+# Suggested setup for teams / companies
+
+What I've found works best is to use GitHub for this purpose.
+
+* Set up a specific repository to store the JSON file. Use a branch called
+  `gh-pages` so the newest version of the file is always published at a stable
+  URL.
+* Allow any team member to make changes without review.
+* If you modify an existing link, check with the `owner` first.
 
 <style>
 
