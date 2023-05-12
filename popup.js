@@ -16,13 +16,21 @@ const initialize = () => {
   searchField.focus();
 };
 
+const isStale = (timestamp) => {
+  const oneHourInMs = 60 * 60 * 1000;
+  const now = new Date().getTime();
+  return now - timestamp >= oneHourInMs;
+};
+
 const updateLastUpdateTimeStampUi = () => {
   getLastRefreshTimestamp().then((timestamp) => {
-    if (!timestamp) {
-      return;
+    if (!timestamp || isStale(timestamp)) {
+      autoRefresh();
     }
-    lastUpdatedLabel.textContent = '(last updated ' +
-        getRelativeTimeAgo(timestamp) + ' ago)';
+    if (!!timestamp) {
+      lastUpdatedLabel.textContent = '(last updated ' +
+          getRelativeTimeAgo(timestamp) + ' ago)';
+    }
   });
 };
 

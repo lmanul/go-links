@@ -12,6 +12,10 @@ const getRoutingTableUrl = () => {
   );
 };
 
+const autoRefresh = () => {
+  getRoutingTableUrl().then(refreshRoutingTable);
+};
+
 const setLastRefreshTimestamp = () => {
   chrome.storage.local.set({
     'last_refresh_timestamp': (new Date().getTime())
