@@ -1,5 +1,31 @@
 let routingTable;
 
+const saveRoutingTableUrl = (url) => {
+  return chrome.storage.local.set({'routing_source_url': url});
+};
+
+const getRoutingTableUrl = () => {
+  return chrome.storage.local.get(['routing_source_url']).then(
+    (loadedObject) => {
+      return loadedObject['routing_source_url'];
+    }
+  );
+};
+
+const setLastRefreshTimestamp = () => {
+  chrome.storage.local.set({
+    'last_refresh_timestamp': (new Date().getTime())
+  });
+};
+
+const getLastRefreshTimestamp = () => {
+  return chrome.storage.local.get(['last_refresh_timestamp']).then(
+    (loadedObject) => {
+      return loadedObject['last_refresh_timestamp'];
+    }
+  );
+};
+
 const loadRoutingTable = () => {
   chrome.storage.local.get(['routing']).then((data) => {
     console.log('Loaded');
@@ -34,7 +60,6 @@ const refreshRoutingTable = (url) => {
       sanitized_data = sanitized_data.replace(/],\s?}/, ']}');
       return new Promise((resolve, reject) => {
         try {
-          console.log("Fetched", sanitized_data);
           const parsed = JSON.parse(sanitized_data);
           routingTable = parsed;
           chrome.storage.local.set({'routing': sanitized_data}, () => {
@@ -42,7 +67,7 @@ const refreshRoutingTable = (url) => {
               console.log('Local storage failure');
               reject(chrome.runtime.lastError);
             } else {
-              console.log('Updated storage');
+              setLastRefreshTimestamp();
               resolve(parsed);
             }
           });

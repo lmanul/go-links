@@ -2,9 +2,31 @@ const searchField = document.querySelector('#search-input');
 const inputField = document.querySelector('#routing-input');
 const saveButton = document.querySelector('#save');
 const resultsContainer = document.querySelector('#results');
+const lastUpdatedLabel = document.querySelector('#last-updated');
 searchField.focus();
 
-loadRoutingTable();
+const initialize = () => {
+  loadRoutingTable();
+  updateLastUpdateTimeStampUi();
+
+  getRoutingTableUrl().then((url) => {
+    if (!!url) {
+      inputField.value = url;
+    }
+  });
+};
+
+const updateLastUpdateTimeStampUi = () => {
+  getLastRefreshTimestamp().then((timestamp) => {
+    if (!timestamp) {
+      return;
+    }
+    const date = new Date(timestamp);
+    lastUpdatedLabel.textContent = '(last updated ' +
+        date.toLocaleDateString() + ' ' +
+        date.toLocaleTimeString() + ')'
+  });
+};
 
 const onResultClicked = (e) => {
   console.log(e);
@@ -53,8 +75,12 @@ saveButton.addEventListener('click', (event) => {
   refreshRoutingTable(inputField.value).then((table) => {
     saveButton.classList.add('success');
     saveButton.textContent = 'Fetched ' + Object.keys(table).length + ' shortcuts';
+    saveRoutingTableUrl(inputField.value);
+    updateLastUpdateTimeStampUi();
   }).catch(() => {
     saveButton.classList.add('failure');
     saveButton.textContent = 'Oops! Valid JSON?';
   });
 });
+
+initialize();
