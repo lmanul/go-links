@@ -25,7 +25,7 @@ unpacked**" (top left).
 
 ![](img/developer_toggle.png)
 
-And select the folder you have just unzipped.
+Select the folder you have just unzipped.
 
 ## Set a keyboard shortcut
 
@@ -38,9 +38,20 @@ button:
 
 ![](img/edit_shortcut.png)
 
+We recommend `Ctrl-G` and will be assuming that below.
+
+# Configuration
+
+The extension gets its shortcut definitions from an JSON file that it updates
+regularly. Hit `Ctrl-G` to open the extension, paste the URL to that JSON
+file, and click on "Update now".
+
 ![](img/set_json.png)
 
 # Usage
+
+Hit `Ctrl-G` and type a few letters. Hit `Enter` to go to the first result,
+or click on one of the results in the list.
 
 <style>
 
@@ -56,7 +67,7 @@ button:
   }
 
   body img {
-    /* border: 1px solid rgba(0, 0, 0, 0.5); */
+    border: 1px solid rgba(0, 0, 0, 0.5);
     display: block;
     margin: 0 auto;
   }
