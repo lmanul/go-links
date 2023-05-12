@@ -60,8 +60,6 @@ const refreshRoutingTable = (url) => {
         filtered_lines.push(line);
       }
       let sanitized_data = filtered_lines.join(' ');
-      // JSON doesn't like a trailing comma at the very end of a list
-      sanitized_data = sanitized_data.replace(/],\s?}/, ']}');
       return new Promise((resolve, reject) => {
         try {
           const parsed = JSON.parse(sanitized_data);
