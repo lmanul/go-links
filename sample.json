@@ -5,6 +5,7 @@
   "######## The second string in each array is the owner. Helpful for teams.": "",
 
   "go-docs": ["https://lmanul.github.io/go-links/", "manu"],
+  "go-gh": ["https://github.com/lmanul/go-links/", "manu"],
   "goog": ["https://google.com", "manu"],
   "news": ["https://news.google.com", "manu"],
   "nyt": ["https://www.nytimes.com/", "manu"],
