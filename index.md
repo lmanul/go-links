@@ -4,32 +4,20 @@ title: Go
 
 # Installation
 
-## Get the extension
+## 1. Get the extension
 
-This is only available for Chrome right now (sorry). The extension is still
-being approved in the Chrome webstore, so you need to install it manually for
-now.
+Only for Chrome right now (sorry): head to the
+<a href="https://chrome.google.com/webstore/detail/go/gaogoiagakolafihfbihmjimlmcfokfo" target="_blank">web store page</a>
+and install the extension.
 
-Start by **downloading the extension** from its
-[GitHub Page](https://github.com/lmanul/go-links). Click on the green
-button and select "Download ZIP":
 
-![](img/github.png)
+## 2. Set a keyboard shortcut
 
-And unzip the archive you've downloaded. Back in Chrome, head to **Extensions**:
+Open Chrome's Extension page:
 
 ![](img/extensions_menu.png)
 
-If it's off, flip the "**developer**" toggle (top right). Then click on "**Load
-unpacked**" (top left).
-
-![](img/developer_toggle.png)
-
-Select the folder you have just unzipped.
-
-## Set a keyboard shortcut
-
-On this same Extensions page, click on the top left "hamburger" menu:
+Click on the top left "hamburger" menu:
 
 ![](img/extensions_hamburger.png)
 
@@ -43,14 +31,10 @@ I recommend `Ctrl-G` and will be assuming that below.
 # Configuration
 
 The extension gets its shortcut definitions from an JSON file that it updates
-regularly. The JSON file needs to have the following structure:
+regularly. To test it out, you can use this URL:
 
 ```
-{
-  "### Hello ###": "Keys starting with '#' will be ignored, and dashes are ignored.",
-  "foo": ["https://destination.com", "owner"],
-  "bar": ["https://another-destination.com"]
-}
+https://lmanul.github.io/go-links/sample.json
 ```
 
 Hit `Ctrl-G` to open the extension, paste the URL to that JSON
@@ -72,6 +56,28 @@ What I've found works best is to use GitHub for this purpose.
   URL.
 * Allow any team member to make changes without review.
 * If you modify an existing link, check with the `owner` first.
+
+# Appendix: install development version
+
+If you want a version that hasn't been approved into the web store yet, follow
+these instructions.
+
+Start by **downloading the extension** from its
+[GitHub Page](https://github.com/lmanul/go-links). Click on the green
+button and select "Download ZIP":
+
+![](img/github.png)
+
+And unzip the archive you've downloaded. Back in Chrome, head to **Extensions**:
+
+![](img/extensions_menu.png)
+
+If it's off, flip the "**developer**" toggle (top right). Then click on "**Load
+unpacked**" (top left).
+
+![](img/developer_toggle.png)
+
+Select the folder you have just unzipped.
 
 <style>
 
