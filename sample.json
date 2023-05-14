@@ -6,6 +6,7 @@
 
   "go-docs": ["https://lmanul.github.io/go-links/", "manu"],
   "goog": ["https://google.com", "manu"],
+  "news": ["https://news.google.com", "manu"],
   "nyt": ["https://www.nytimes.com/", "manu"],
 
   "zzzzzzzzzzzzzzzzzzzzzzzzzzzzz": ["https://sentinel.com/trailingcomma", "manu"]
