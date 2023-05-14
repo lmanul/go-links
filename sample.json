@@ -1,0 +1,12 @@
+{
+  "######## This is a sample routing table for 'Go'": "",
+  "######## Keys starting with '#' are ignored": "",
+  "######## Dashes in keys are ignored but can help for readability": "",
+  "######## The second string in each array is the owner. Helpful for teams.": "",
+
+  "go-docs": ["https://lmanul.github.io/go-links/", "manu"],
+  "goog": ["https://google.com", "manu"],
+  "nyt": ["https://www.nytimes.com/", "manu"],
+
+  "zzzzzzzzzzzzzzzzzzzzzzzzzzzzz": ["https://sentinel.com/trailingcomma", "manu"]
+}
