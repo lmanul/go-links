@@ -46,11 +46,7 @@ const refreshRoutingTable = (url) => {
       const filtered_lines = [];
       for (let line of lines) {
         line = line.trim();
-        // Ignore comments
-        if (line.startsWith('"#')) {
-          continue;
-        }
-        // Also collapse all spaces
+        // Collapse all spaces
         while (line.indexOf('  ') != -1) {
           line = line.replace(/  /g, ' ');
         }
@@ -76,6 +72,7 @@ const refreshRoutingTable = (url) => {
         } catch (e) {
           console.log('Could not parse JSON');
           console.log(e);
+          console.log(sanitized_data);
           reject();
         }
       });
