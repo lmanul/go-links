@@ -75,6 +75,7 @@ const refreshRoutingTable = (url) => {
           });
         } catch (e) {
           console.log('Could not parse JSON');
+          console.log(e);
           reject();
         }
       });
