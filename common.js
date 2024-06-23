@@ -32,10 +32,7 @@ const getLastRefreshTimestamp = () => {
 
 const loadRoutingTable = () => {
   chrome.storage.local.get(['routing']).then((data) => {
-    console.log('Loaded');
-    console.log(data['routing']);
     routingTable = JSON.parse(data['routing']);
-    console.log(routingTable);
   });
 };
 
@@ -144,8 +141,6 @@ const loadUrl = (target) => {
 
 const getRelativeTimeAgo = (past_timestamp) => {
   const now = (new Date()).getTime();
-  console.log('Past ' + past_timestamp);
-  console.log('Now ' + now);
   const diff_seconds = Math.floor((now - past_timestamp) / 1000);
   const diff_minutes = Math.floor(diff_seconds / 60);
   const diff_hours = Math.floor(diff_minutes / 60);
